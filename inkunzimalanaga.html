@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INKUNZIMALANGA HOLDINGS PTY(Ltd)</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #e6e6e6, #f5f5f5);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, #000000, #8B0000);
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 3px solid #C0C0C0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8B0000;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: #C0C0C0;
+        }
+        
+        .contact-info {
+            background-color: #2F4F4F;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            border-left: 4px solid #8B0000;
+        }
+        
+        .page {
+            background-color: white;
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            page-break-after: always;
+            border-top: 5px solid #8B0000;
+        }
+        
+        h1 {
+            color: #8B0000;
+            border-bottom: 2px solid #C0C0C0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #000000;
+            margin: 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #8B0000;
+        }
+        
+        h3 {
+            color: #2F4F4F;
+            margin: 10px 0;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        li:before {
+            content: "•";
+            color: #8B0000;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: linear-gradient(to bottom, #F5F5F5, #E6E6E6);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #8B0000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, #F5F5F5, #E6E6E6);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-member h3 {
+            margin-top: 15px;
+            color: #8B0000;
+        }
+        
+        .team-role {
+            font-weight: bold;
+            color: #2F4F4F;
+            background-color: #C0C0C0;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .team-responsibilities {
+            font-style: italic;
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        .project-list {
+            margin: 20px 0;
+        }
+        
+        .project-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #C0C0C0;
+        }
+        
+        .project-year {
+            font-weight: bold;
+            color: #8B0000;
+        }
+        
+        .qr-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: linear-gradient(to bottom, #F5F5F5, #E6E6E6);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #C0C0C0;
+        }
+        
+        #qrcode {
+            margin: 20px auto;
+            display: inline-block;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-height: 220px;
+            min-width: 220px;
+        }
+        
+        .qr-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            width: 200px;
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            color: #666;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .company-info {
+            background: linear-gradient(to right, #F5F5F5, #E6E6E6);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #8B0000;
+        }
+        
+        .philosophy {
+            background: linear-gradient(to right, #E6E6E6, #F5F5F5);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-right: 4px solid #8B0000;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #000000, #2F4F4F);
+            color: white;
+            margin-top: 40px;
+            border-top: 5px solid #8B0000;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page {
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="company-logo">
+                    <!-- Replace with actual logo -->
+                    <div><img class="company-logo" src="Logo.jpg" alt="INKUNZIMALANGA HOLDINGS Logo"></div>
+                </div>
+                <div>
+                    <div class="logo">INKUNZIMALANGA HOLDINGS PTY(Ltd)</div>
+                    <div class="tagline">service beyond excellence</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="contact-info">
+            siphoche@gmail.com / inkunzi1@yahoo.com<br>
+            +27 (0) 82 385 0046<br>
+            31 First Avenue Rietkuil 1097<br>
+            Mpumalanga Province (Steve Tshwete Local Municipality)
+        </div>
+
+        <!-- Company Background -->
+        <div class="page">
+            <h1>Company Background</h1>
+            <div class="company-info">
+                <p>Inkunzimalanga Holdings was established in 2015 by Sipho Mnguni.</p>
+                <p>Inkunzimalanga aims to work very closely with experts with over 30 years of industry experience thus making the company very flexible and diverse to ensure service beyond excellence as & when presented with an opportunity.</p>
+                <p>Inkunzimalanga Holdings aspire to offer business to the energy, mining, construction, manufacturing and government sectors as the company specializes in Civil construction, Plant hire, Transportation & Logistics, Electrical & Mechanical Engineering, Mining & Rehabilitation, Industrial cleaning and Mining supplies.</p>
+            </div>
+
+            <h1>Company Philosophy</h1>
+            <div class="philosophy">
+                <p>Inkunzimalanga corporate culture is characterized by its ability to adapt quickly to clients' needs and requirements. This is done by bringing a sharper focus to the requirements of the client and striving to leverage cutting-edge technology to provide the highest levels of service through cost-efficient methods.</p>
+                <p>We also pride ourselves with a culture and tradition of ingenuity, which has driven continuous improvement, and the relentless drive for innovation in the way we operate. Our focus is to challenge the status quo, working proactively with key stakeholders to find the best solutions and applications to assure sustainable, long-term relationships.</p>
+                <p>We focus on providing a variety of solutions for the clients to choose from because of not subscribing to a specific brand, we are able to provide alternative options (Premium to unpopular but good brands) that have similar or even superior capabilities in terms of performance.</p>
+            </div>
+        </div>
+
+        <!-- Page 2: Our Services -->
+        <div class="page">
+            <h1>Our Services</h1>
+            <p>We do sales, repairs, refurbishments, fabrication, rental, and installations of Various Mechanical Engineering spares not limited to the following:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h2>Project Management</h2>
+                    <ul>
+                        <li>NTD, FAC - Rope Access / Sky Climbing Specialists</li>
+                        <li>Fabric Filter Plant Replacement & Maintenance</li>
+                        <li>Vertical Spindle & Tube Mill Maintenance</li>
+                        <li>Industrial Valve Repairs & Supply</li>
+                        <li>Trunnion Arm Repairs</li>
+                        <li>Building / Construction</li>
+                        <li>Industrial Cleaning (Boiler washing & Vacuuming)</li>
+                        <li>Industrial Pumps (Supply & Repair)</li>
+                        <li>Industrial Compressors Oil Purification</li>
+                        <li>Labour Supply</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h2>Spare Part Supply</h2>
+                    <ul>
+                        <li>Gaskets</li>
+                        <li>Bearing</li>
+                        <li>Compressed Air Dryers</li>
+                        <li>Heat Exchangers</li>
+                        <li>Packing</li>
+                        <li>Pulleys</li>
+                        <li>Filters</li>
+                        <li>Steel (Stainless, Mild, Carbon, etc.), bars, rods sheeting, tubes etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Project Experience -->
+        <div class="page">
+            <h1>Project Experience</h1>
+            <p>INKUNZIMALANGA HOLDINGS, is and has successfully completed and managed the presented projects mentioned below:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h2>Civil Construction</h2>
+                    <ul>
+                        <li>Building construction</li>
+                        <li>Plumbing Services</li>
+                        <li>Storm water drainage systems</li>
+                        <li>Renovations & Demolitions</li>
+                        <li>Road Construction</li>
+                        <li>Property Development</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h2>Plant & Equipment Hire</h2>
+                    <ul>
+                        <li>Vacuum Trucks</li>
+                        <li>Tipper Trucks (6m³ - 12m³)</li>
+                        <li>Low Bed Trucks</li>
+                        <li>Forklifts</li>
+                        <li>Mobile Lights</li>
+                        <li>34 Ton Side Tipper Trucks</li>
+                        <li>Skyjack</li>
+                        <li>Bobcats</li>
+                        <li>Mobile Diesel / Electric compressors</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h2>Other Services</h2>
+                    <ul>
+                        <li>Horticultural Services (Garden Maintenance)</li>
+                        <li>Dragging Services</li>
+                        <li>Security & Protective Services</li>
+                        <li>Mining, PPE & Industrial Equipment Supplies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4: Meet the Team -->
+        <div class="page">
+            <h1>Meet the Team</h1>
+            <p>INKUNZIMALANG HOLDINNGS presents the current executive as follows:</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <h2>SIPHO MNGUNI</h2>
+                    <div class="team-role">CEO & Director</div>
+                    <p>Founder of Inkunzimalanga Holdings</p>
+                </div>
+                
+                <div class="team-member">
+                    <h2>XOLANI SKHOSANA</h2>
+                    <div class="team-role">Manager Technical services</div>
+                    <div class="team-responsibilities">Drivers, Operators, Technicians & Assistants</div>
+                </div>
+                
+                <div class="team-member">
+                    <h2>Regina Mnguni</h2>
+                    <div class="team-role">Office Manager</div>
+                    <div class="team-responsibilities">Site Supervisor, Artisans, Welders, SHEQ, Operators, Cleaners, Assistants</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: Safety and Quality Standards -->
+        <div class="page">
+            <h1>Safety and Quality Standards</h1>
+            <p>INKUNZIMALANGA Holdings maintains a strict safety policy in all mining and industrial operations, ensuring full compliance with regulations and prioritizing the protection of employees and stakeholders.</p>
+            
+            <div class="service-card">
+                <h2>Strict Safety Protocols</h2>
+                <ul>
+                    <li>Mandatory PPE (Personal Protective Equipment):
+                        <ul>
+                            <li>All employees and contractors must wear appropriate PPE (helmets, gloves, boots, reflective clothing, respirators, etc.) before entering any worksite.</li>
+                        </ul>
+                    </li>
+                    <li>Daily Safety Inspections: Supervisors must conduct routine inspections of work areas before shifts begin to identify and address potential hazards.</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h2>Quality Assurance</h2>
+                <p>INKUNZIMALANGA Holdings is committed to delivering services of the highest quality by adhering to strict operational standards, continuous improvement practices, and compliance with industry regulations, ensuring reliability, safety, and excellence in every project.</p>
+            </div>
+        </div>
+
+        <!-- Page 6: COMPLETED PROJECTS -->
+        <div class="page">
+            <h1>COMPLETED PROJECTS</h1>
+            
+            <div class="project-list">
+                <div class="project-item">
+                    <span class="project-year">2017:</span> Building Housing Units - Construction of RDP Houses (10 Units) in Kwazamokuhle Extension - Subcontracted by Shadow Trading
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2019:</span> Eskom - Construction of two guardhouses and a kitchen
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2019-2020:</span> Arnot OPCO - Renovation of offices - Conversion of an office to female change room - Construction of toilets and showers - Tiling and painting of Security Offices
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2017:</span> Horticulture – Arnot Power Station
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2021:</span> NDT (FAC) - Integrity NDT (Subcontract) * Arnot Power Station
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2021:</span> Pendrina Power Station
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2022:</span> Arnot Power Station
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2022:</span> Pendrina Power Station (DRAUGHT GROUP Unit 5 outage) - Steinmuller - Boiler washing
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2022-2023:</span> Exclusive Business Enterprise - Industrial Cleaning Sub-contract - Arnot Power Station
+                </div>
+                
+                <div class="project-item">
+                    <span class="project-year">2023:</span> Anelad Pty Ltd - Labour Supply (Arnot Power Station Unit 5 Outage)
+                </div>
+            </div>
+            
+            <h2>CURRENT PROJECTS</h2>
+            
+            <div class="project-list">
+                <div class="project-item">
+                    Vehicle Washing Services at Arnot Power Station<br>
+                    <span class="project-year">Period:</span> July 2023 – August 2025
+                </div>
+                
+                <div class="project-item">
+                    Rope Access at Arnot Power Station (Industrial Cleaning)<br>
+                    <span class="project-year">Period:</span> July 2025 – Current
+                </div>
+            </div>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <h2>Share Our Business Profile</h2>
+            <p>Scan this QR code to visit our website</p>
+            <div id="qrcode">
+                <div class="qr-placeholder">
+                    <p>QR Code will generate here...</p>
+                    <p>If you don't see it, check your internet connection and refresh the page.</p>
+                </div>
+            </div>
+            <p>Having issues with the QR code? <button onclick="generateQRCode()">Click here to generate it</button></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>INKUNZIMALANGA HOLDINGS PTY(Ltd) - Service Beyond Excellence</p>
+        <p>siphoche@gmail.com / inkunzi1@yahoo.com | +27 (0) 82 385 0046</p>
+    </footer>
+
+    <script>
+        // Generate QR Code
+        function generateQRCode() {
+            // Get the current URL
+            const url = window.location.href;
+            
+            // Clear the placeholder
+            document.getElementById('qrcode').innerHTML = '';
+            
+            // Generate QR Code
+            try {
+                QRCode.toCanvas(document.getElementById('qrcode'), url, {
+                    width: 200,
+                    margin: 1,
+                    color: {
+                        dark: '#8B0000',
+                        light: '#ffffff'
+                    }
+                }, function(error) {
+                    if (error) {
+                        console.error(error);
+                        document.getElementById('qrcode').innerHTML = `
+                            <div class="qr-placeholder">
+                                <p>Error generating QR code.</p>
+                                <p>Please check your internet connection and try again.</p>
+                            </div>
+                        `;
+                    }
+                });
+            } catch (e) {
+                document.getElementById('qrcode').innerHTML = `
+                    <div class="qr-placeholder">
+                        <p>QR library not loaded.</p>
+                        <p>Please check your internet connection.</p>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generateQRCode();
+        });
+    </script>
+</body>
+</html>
